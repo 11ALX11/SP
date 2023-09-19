@@ -1,8 +1,8 @@
 /* labrab2.cpp
  * -----------------------------------------------------------------------------------------------------------------
  * Variant #3
- * Создать приложение с тремя кнопками и полем для отображения текста. 
- * По нажатию на кнопку выводить на экран «победу» или «поражение» в зависимости от нажатой кнопки. 
+ * Создать приложение с тремя кнопками и полем для отображения текста.
+ * По нажатию на кнопку выводить на экран «победу» или «поражение» в зависимости от нажатой кнопки.
  * Определять, какая кнопка будет отвечать за это случайным образом при старте приложения и после нажатия на кнопку.
  */
 
@@ -21,6 +21,8 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+
+int FindWinner();
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
@@ -130,12 +132,73 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch (message)
 	{
+	case WM_CREATE:
+	{
+		// btn1: button
+		CreateWindowW(TEXT("button"),
+			TEXT("btn1"),
+			WS_VISIBLE | WS_CHILD,
+			10, 10, 100, 30,
+			hWnd, (HMENU)BTN1, NULL, NULL
+		);
+		// btn2: button
+		CreateWindowW(TEXT("button"),
+			TEXT("btn2"),
+			WS_VISIBLE | WS_CHILD,
+			120, 10, 100, 30,
+			hWnd, (HMENU)BTN2, NULL, NULL
+		);
+		// btn3: button
+		CreateWindowW(TEXT("button"),
+			TEXT("btn3"),
+			WS_VISIBLE | WS_CHILD,
+			230, 10, 100, 30,
+			hWnd, (HMENU)BTN3, NULL, NULL
+		);
+
+		// Text lable1: static
+		hLabel1 = CreateWindowW(TEXT("static"),
+			TEXT("Text"),
+			WS_VISIBLE | WS_CHILD,
+			10, 50, 320, 30,
+			hWnd, (HMENU)LABEL1, NULL, NULL
+		);
+	}
+	break;
 	case WM_COMMAND:
 	{
 		int wmId = LOWORD(wParam);
-		// Parse the menu selections:
+		int winner;
+
 		switch (wmId)
 		{
+		case BTN1:
+			winner = FindWinner();
+			if (winner == BTN1) {
+				SetWindowText(hLabel1, TEXT("You won!"));
+			}
+			else {
+				SetWindowText(hLabel1, TEXT("You lost!"));
+			}
+			break;
+		case BTN2:
+			winner = FindWinner();
+			if (winner == BTN2) {
+				SetWindowText(hLabel1, TEXT("You won!"));
+			}
+			else {
+				SetWindowText(hLabel1, TEXT("You lost!"));
+			}
+			break;
+		case BTN3:
+			winner = FindWinner();
+			if (winner == BTN3) {
+				SetWindowText(hLabel1, TEXT("You won!"));
+			}
+			else {
+				SetWindowText(hLabel1, TEXT("You lost!"));
+			}
+			break;
 		case IDM_ABOUT:
 			DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
 			break;
@@ -182,4 +245,9 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	}
 	return (INT_PTR)FALSE;
+}
+
+int FindWinner() {
+	// BTN1 = 201, BTN2 = 202, BTN3 = 203
+	return rand() % 3 + 200;
 }
