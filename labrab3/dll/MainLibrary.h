@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-//https://learn.microsoft.com/en-us/cpp/build/walkthrough-creating-and-using-a-dynamic-link-library-cpp?view=msvc-170
+//A good tutorial: https://learn.microsoft.com/en-us/cpp/build/walkthrough-creating-and-using-a-dynamic-link-library-cpp?view=msvc-170
 #ifdef MAINLIBRARY_EXPORTS
 #define MAINLIBRARY_API __declspec(dllexport)
 #else
