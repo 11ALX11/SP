@@ -8,8 +8,15 @@
 
 int main()
 {
-	ConsoleWindow w(1, 250, 400, false, 0x000000);
+	vector<Command*> commandsList = { new CopyCommand(), new CopyCommand("xcopy", 5), new DeleteCommand(),
+									new MoveFileCommand(), new RenameFileCommand(), new CreateFileCommand() };
+
+	ConsoleWindow w(1, 800, 600, commandsList, 10);
+	// ConsoleWindow w(1, commandsList, 10);
 	w.printAvailableCommands();
+	Sleep(100);
+	w.showOrHide();
+	w.setColor(14);
 
 	cout << "\n";
 
@@ -17,6 +24,8 @@ int main()
 	w.executeCommand("copy");
 	w.executeCommand("move");
 	w.executeCommand("delete");
+	Sleep(100);
+	w.showOrHide();
 	w.executeCommand("del");
 	w.executeCommand("rename");
 	w.executeCommand("create");
@@ -24,6 +33,8 @@ int main()
 	cout << "\n";
 
 	w.printMemoryUsed();
+
+	cout << "\n" << "Are Administrator Rights Granted?: " << (w.getAreAdministratorRightsGranted() ? "Yes" : "No") << "\n";
 
 	return 0;
 }
