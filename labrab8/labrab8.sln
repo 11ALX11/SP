@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "console", "console\console.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DllHospital", "DllHospital\DllHospital.vcxproj", "{6F4FDA3C-0140-424F-AD17-396B36A41B2A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WindowsForms", "WindowsForms\WindowsForms.vcxproj", "{FEB7C91C-3A21-47C5-B491-7ADC8AA4103D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{6F4FDA3C-0140-424F-AD17-396B36A41B2A}.Release|x64.Build.0 = Release|x64
 		{6F4FDA3C-0140-424F-AD17-396B36A41B2A}.Release|x86.ActiveCfg = Release|Win32
 		{6F4FDA3C-0140-424F-AD17-396B36A41B2A}.Release|x86.Build.0 = Release|Win32
+		{FEB7C91C-3A21-47C5-B491-7ADC8AA4103D}.Debug|x64.ActiveCfg = Debug|x64
+		{FEB7C91C-3A21-47C5-B491-7ADC8AA4103D}.Debug|x64.Build.0 = Debug|x64
+		{FEB7C91C-3A21-47C5-B491-7ADC8AA4103D}.Debug|x86.ActiveCfg = Debug|Win32
+		{FEB7C91C-3A21-47C5-B491-7ADC8AA4103D}.Debug|x86.Build.0 = Debug|Win32
+		{FEB7C91C-3A21-47C5-B491-7ADC8AA4103D}.Release|x64.ActiveCfg = Release|x64
+		{FEB7C91C-3A21-47C5-B491-7ADC8AA4103D}.Release|x64.Build.0 = Release|x64
+		{FEB7C91C-3A21-47C5-B491-7ADC8AA4103D}.Release|x86.ActiveCfg = Release|Win32
+		{FEB7C91C-3A21-47C5-B491-7ADC8AA4103D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

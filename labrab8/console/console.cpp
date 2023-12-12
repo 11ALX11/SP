@@ -35,7 +35,7 @@ int main() {
 	}
 
 	std::vector<std::unique_ptr<Doctor>> doctors;
-	doctors.push_back(std::make_unique<Doctor>("Doctor1", 500));
+	doctors.push_back(std::make_unique<Doctor>("Doctor1", 2500));
 	doctors.push_back(std::make_unique<AdultDoctor>("AdultDoctor2", 4000));
 	doctors.push_back(std::make_unique<Pediatrician>("Pediatrician3", 3500));
 
