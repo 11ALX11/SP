@@ -28,7 +28,7 @@ public:
 		Child
 	};
 
-	Patient(const std::string& name, const int treatmentTime = 500)
+	Patient(const std::string& name = "", const int treatmentTime = 500)
 		: name(name), treatmentTime(treatmentTime), isTreated(false) {}
 
 	void receiveTreatment(int time) {
@@ -55,7 +55,7 @@ public:
 
 extern "C++" HOSPITALLIB_API class AdultPatient : public Patient {
 public:
-	AdultPatient(const std::string& name, const int treatmentTime = 500)
+	AdultPatient(const std::string& name = "", const int treatmentTime = 500)
 		: Patient(name, treatmentTime) {}
 
 	virtual PatientType getType() const {
@@ -64,7 +64,7 @@ public:
 };
 extern "C++" HOSPITALLIB_API class ChildPatient : public Patient {
 public:
-	ChildPatient(const std::string& name, const int treatmentTime = 500)
+	ChildPatient(const std::string& name = "", const int treatmentTime = 500)
 		: Patient(name, treatmentTime) {}
 
 	virtual PatientType getType() const {
@@ -77,7 +77,7 @@ public:
 	std::string name;
 	int maxTreatmentTime;
 
-	Doctor(const std::string& name, int maxTreatmentTime = 300) : name(name), maxTreatmentTime(maxTreatmentTime) {}
+	Doctor(const std::string& name = "", int maxTreatmentTime = 300) : name(name), maxTreatmentTime(maxTreatmentTime) {}
 
 	void treatPatient(Patient& patient) {
 		std::unique_lock<std::mutex> coutLock(coutMutex);
@@ -131,7 +131,7 @@ public:
 
 extern "C++" HOSPITALLIB_API class AdultDoctor : public Doctor {
 public:
-	AdultDoctor(const std::string& name, int maxTreatmentTime = 300) : Doctor(name, maxTreatmentTime) {}
+	AdultDoctor(const std::string& name = "", int maxTreatmentTime = 300) : Doctor(name, maxTreatmentTime) {}
 
 	Patient& getNextPatient(std::vector<std::reference_wrapper<Patient>>& patientsQueue) override {
 		auto it = std::find_if(patientsQueue.begin(), patientsQueue.end(),
@@ -152,7 +152,7 @@ public:
 };
 extern "C++" HOSPITALLIB_API class Pediatrician : public Doctor {
 public:
-	Pediatrician(const std::string& name, int maxTreatmentTime = 300) : Doctor(name, maxTreatmentTime) {}
+	Pediatrician(const std::string& name = "", int maxTreatmentTime = 300) : Doctor(name, maxTreatmentTime) {}
 
 	Patient& getNextPatient(std::vector<std::reference_wrapper<Patient>>& patientsQueue) override {
 		auto it = std::find_if(patientsQueue.begin(), patientsQueue.end(),
